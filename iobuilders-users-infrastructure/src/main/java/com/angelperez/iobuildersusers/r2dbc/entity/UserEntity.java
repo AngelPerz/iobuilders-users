@@ -4,13 +4,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @NoArgsConstructor
 @Table(name = "users")
 @Accessors(chain = true)
-public class UserEntity {
+public class UserEntity implements Persistable<String> {
 
     @Id
     private String id;
@@ -23,4 +24,8 @@ public class UserEntity {
 
     private Integer phone;
 
+    @Override
+    public boolean isNew() {
+        return true;
+    }
 }

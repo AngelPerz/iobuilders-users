@@ -15,4 +15,20 @@ public class UsersServiceImpl implements UsersService {
     public Mono<User> getUser(String id) {
         return usersRepositoryPort.getUser(id);
     }
+
+    @Override
+    public Mono<User> saveUser(User user) {
+        return usersRepositoryPort.saveUser(user);
+    }
+
+    @Override
+    public Mono<User> updateUser(User user) {
+        return usersRepositoryPort.updateUser(user);
+    }
+
+    @Override
+    public Mono<Void> deleteUser(String id) {
+        return usersRepositoryPort.deleteUser(id);
+    }
+
 }
