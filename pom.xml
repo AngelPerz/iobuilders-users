@@ -47,7 +47,7 @@
                         </path>
                         <path>
                             <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct</artifactId>
+                            <artifactId>mapstruct-processor</artifactId>
                             <version>1.4.2.Final</version>
                         </path>
                     </annotationProcessorPaths>

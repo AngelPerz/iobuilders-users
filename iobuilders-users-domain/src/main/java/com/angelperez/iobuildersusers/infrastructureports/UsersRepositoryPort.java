@@ -1,9 +1,9 @@
-package com.angelperez.iobuildersusers.applicationports;
+package com.angelperez.iobuildersusers.infrastructureports;
 
 import com.angelperez.iobuildersusers.model.User;
 import reactor.core.publisher.Mono;
 
-public interface UsersService {
+public interface UsersRepositoryPort {
 
     Mono<User> getUser(String id);
 }
