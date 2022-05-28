@@ -10,17 +10,7 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 @Configuration
 @EnableR2dbcRepositories
 public class DatabaseConfiguration {
-//
-//    @Bean
-//    public H2ConnectionFactory connectionFactory() {
-//        return new H2ConnectionFactory(
-//            H2ConnectionConfiguration.builder()
-//                .url("jdbc:h2:./data:default;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;")
-//                .username("sa")
-//                .build()
-//        );
-//    }
-//
+
     @Bean(initMethod = "migrate")
     public Flyway flyway() {
         return new Flyway(Flyway.configure()

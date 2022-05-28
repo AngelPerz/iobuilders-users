@@ -25,6 +25,7 @@ public class UsersController {
         @ApiResponse(responseCode = "404", description = "User not found")})
     @GetMapping("/users/{id}")
     public Mono<ResponseEntity<UserDTO>> getUserById(@PathVariable(value = "id") String id) {
-        return usersService.getUser(id).map(t -> ResponseEntity.ok(usersMapper.toDTO(t))).defaultIfEmpty(ResponseEntity.notFound().build());
+        return usersService.getUser(id).map(t -> ResponseEntity.ok(usersMapper.toDTO(t)))
+            .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 }
