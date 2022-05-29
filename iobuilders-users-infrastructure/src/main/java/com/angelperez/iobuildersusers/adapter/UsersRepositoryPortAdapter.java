@@ -14,9 +14,9 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class UsersRepositoryPortAdapter implements UsersRepositoryPort {
 
-    UsersRepository usersRepository;
+    private UsersRepository usersRepository;
 
-    UserEntitiesMapper userEntitiesMapper;
+    private UserEntitiesMapper userEntitiesMapper;
 
     @Override
     public Mono<User> getUser(String id) {

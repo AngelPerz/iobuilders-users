@@ -5,6 +5,7 @@ import io.r2dbc.postgresql.PostgresqlConnectionFactory;
 import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 @Configuration
@@ -12,6 +13,7 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 public class DatabaseConfiguration {
 
     @Bean(initMethod = "migrate")
+    @Profile("!test")
     public Flyway flyway() {
         return new Flyway(Flyway.configure()
             .baselineOnMigrate(true)
@@ -32,4 +34,3 @@ public class DatabaseConfiguration {
                 .build());
     }
 }
-

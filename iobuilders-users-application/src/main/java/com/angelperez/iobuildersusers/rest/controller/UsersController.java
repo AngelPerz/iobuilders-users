@@ -1,7 +1,6 @@
 package com.angelperez.iobuildersusers.rest.controller;
 
 import com.angelperez.iobuildersusers.applicationports.UsersService;
-import com.angelperez.iobuildersusers.common.OperationResult;
 import com.angelperez.iobuildersusers.rest.dto.UserDTO;
 import com.angelperez.iobuildersusers.rest.mapper.UsersMapper;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -47,7 +46,7 @@ public class UsersController {
         @ApiResponse(responseCode = "200", description = "User updated"),
         @ApiResponse(responseCode = "404", description = "User not found")})
     @PutMapping("/users")
-    public Mono<ResponseEntity<UserDTO>> updateUser(@RequestBody UserDTO userDTO) {
+    public Mono<ResponseEntity<Void>> updateUser(@RequestBody UserDTO userDTO) {
         return usersService.updateUser(usersMapper.toDomainModel(userDTO))
             .map(res -> switch (res) {
                 case OK -> new ResponseEntity<>(HttpStatus.OK);

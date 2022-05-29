@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class UsersServiceImpl implements UsersService {
 
-    UsersRepositoryPort usersRepositoryPort;
+    private UsersRepositoryPort usersRepositoryPort;
 
     @Override
     public Mono<User> getUser(String id) {
