@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -24,8 +25,11 @@ public class UserEntity implements Persistable<String> {
 
     private Integer phone;
 
+    @Transient
+    private boolean isNew;
+
     @Override
     public boolean isNew() {
-        return true;
+        return isNew;
     }
 }
