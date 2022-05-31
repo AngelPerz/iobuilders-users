@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
+
 @AllArgsConstructor
 @RestController
 public class UsersController {
@@ -33,7 +35,7 @@ public class UsersController {
         @ApiResponse(responseCode = "201", description = "User created"),
         @ApiResponse(responseCode = "409", description = "User already exists")})
     @PostMapping("/users")
-    public Mono<ResponseEntity<Void>> createUser(@RequestBody UserDTO userDTO) {
+    public Mono<ResponseEntity<Void>> createUser(@Valid @RequestBody UserDTO userDTO) {
         return usersService.saveUser(usersMapper.toDomainModel(userDTO))
             .map(res -> switch (res) {
                 case OK -> new ResponseEntity<>(HttpStatus.CREATED);
@@ -46,7 +48,7 @@ public class UsersController {
         @ApiResponse(responseCode = "200", description = "User updated"),
         @ApiResponse(responseCode = "404", description = "User not found")})
     @PutMapping("/users")
-    public Mono<ResponseEntity<Void>> updateUser(@RequestBody UserDTO userDTO) {
+    public Mono<ResponseEntity<Void>> updateUser(@Valid @RequestBody UserDTO userDTO) {
         return usersService.updateUser(usersMapper.toDomainModel(userDTO))
             .map(res -> switch (res) {
                 case OK -> new ResponseEntity<>(HttpStatus.OK);

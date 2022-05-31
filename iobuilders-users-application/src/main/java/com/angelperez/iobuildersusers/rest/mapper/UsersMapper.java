@@ -7,8 +7,8 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface UsersMapper {
 
-    UserDTO toDTO (User user);
+    UserDTO toDTO(User user);
 
-    User toDomainModel (UserDTO userDTO);
+    User toDomainModel(UserDTO userDTO);
 
 }

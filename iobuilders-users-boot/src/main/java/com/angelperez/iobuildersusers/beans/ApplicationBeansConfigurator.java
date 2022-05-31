@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationBeansConfigurator {
 
     @Bean
-    public UsersService getUsersService(UsersRepositoryPort usersRepositoryPort){
+    public UsersService getUsersService(UsersRepositoryPort usersRepositoryPort) {
         return new UsersServiceImpl(usersRepositoryPort);
     }
 
     @Bean
-    public UsersRepositoryPort getUsersRepository(UsersRepository usersRepository, UserEntitiesMapper userEntitiesMapper){
+    public UsersRepositoryPort getUsersRepository(UsersRepository usersRepository, UserEntitiesMapper userEntitiesMapper) {
         return new UsersRepositoryPortAdapter(usersRepository, userEntitiesMapper);
     }
 }
